@@ -1,0 +1,35 @@
+{#
+| Variable           | Type    | Description                                                                  |
+|--------------------|---------|------------------------------------------------------------------------------|
+| component          | object  | Merchant fields from twilight.json for this block                            |
+| component.is_visible | bool  | Show or hide the strip                                                       |
+| component.title    | ?string | Optional heading                                                             |
+| component.body     | string  | Main copy (multiline plain text)                                             |
+| component.cta_text | ?string | Button/ link label when CTA URL is set                                       |
+| component.cta_url  | ?string | Resolved URL for the CTA                                                     |
+| position           | int     | Sorting index on the home page                                               |
+#}
+{% set body = component.body|default('')|trim %}
+{% if component.is_visible and body %}
+<section class="s-block s-block--promo-strip" data-promo-strip="{{ position }}">
+    <div class="container">
+        <div class="promo-strip__inner">
+            {% if component.title|default('')|trim %}
+                <h2 class="promo-strip__title">{{ component.title }}</h2>
+            {% endif %}
+            <div class="promo-strip__body">
+                {% for line in body|split('\n') %}
+                    {% if line|trim %}
+                        <p class="promo-strip__paragraph">{{ line }}</p>
+                    {% endif %}
+                {% endfor %}
+            </div>
+            {% if component.cta_url and component.cta_text|default('')|trim %}
+                <div class="promo-strip__actions">
+                    <a href="{{ component.cta_url }}" class="promo-strip__cta">{{ component.cta_text }}</a>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</section>
+{% endif %}

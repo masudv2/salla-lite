@@ -451,3 +451,36 @@
     transform: translateX(-50%);
   }
 }
+
+/* Promo strip (home page builder — text + optional CTA) */
+.s-block--promo-strip {
+  @apply w-full;
+
+  .promo-strip__inner {
+    @apply rounded-lg border border-gray-200 bg-gray-50 px-4 py-6 sm:px-8 sm:py-8;
+  }
+
+  .promo-strip__title {
+    @apply text-lg font-bold text-gray-900 mb-3 sm:mb-4;
+  }
+
+  .promo-strip__body {
+    @apply text-gray-700 text-sm sm:text-base leading-relaxed;
+  }
+
+  .promo-strip__paragraph {
+    @apply mb-2 last:mb-0;
+
+    &:last-child {
+      @apply mb-0;
+    }
+  }
+
+  .promo-strip__actions {
+    @apply mt-5 sm:mt-6;
+  }
+
+  .promo-strip__cta {
+    @apply inline-flex items-center gap-2 font-bold text-sm text-primary hover:opacity-90 underline-offset-2 hover:underline;
+  }
+}

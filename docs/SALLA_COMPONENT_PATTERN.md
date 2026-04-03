@@ -97,14 +97,13 @@ If something does not show: confirm the commit is the one the store imports, har
 
 ---
 
-## 7. Announcement bar — reference mapping
+## 7. Reference components in this repo
 
-| Concept | Value |
-|---------|--------|
-| Feature | `component-announcement-bar` |
-| Path | `home.announcement-bar` |
-| Twig | `src/views/components/home/announcement-bar.twig` |
-| Editor title | EN: “Announcement bar”, AR: “شريط الإعلانات” |
-| Styles | `home-blocks.scss` → `.s-block--announcement-bar` |
+| Block | Feature | Path | Twig file |
+|-------|---------|------|-----------|
+| Announcement bar | `component-announcement-bar` | `home.announcement-bar` | `announcement-bar.twig` |
+| Promo strip | `component-promo-strip` | `home.promo-strip` | `promo-strip.twig` |
 
-Use this row as a template row in §6 for the next component.
+Editor titles: **Announcement bar** / **شريط الإعلانات**; **Promo strip** / **شريط ترويجي**.
+
+Use these rows as templates when adding new blocks in §6.
