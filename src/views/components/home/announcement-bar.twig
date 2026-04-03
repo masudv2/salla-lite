@@ -1,0 +1,32 @@
+{#
+| Variable                | Type     | Description                                                                  |
+|-------------------------|----------|------------------------------------------------------------------------------|
+| component               | object   | Merchant fields from twilight.json `components` → announcement bar           |
+| component.is_visible    | bool     | Show or hide the bar                                                         |
+| component.announcements | object[] | Rows with text and optional resolved URL                                     |
+| position                | int      | Sorting index on the home page                                               |
+#}
+{% if component.is_visible and component.announcements|length %}
+<section class="s-block s-block--announcement-bar" data-announcement-bar="{{ position }}">
+    <div class="announcement-bar__viewport">
+        <div class="announcement-bar__inner">
+            {% for repeat in [1, 2] %}
+                <div class="announcement-bar__group"{% if repeat == 2 %} aria-hidden="true"{% endif %}>
+                    {% for item in component.announcements %}
+                        {% set text = item.text|default('')|trim %}
+                        {% if text %}
+                            <span class="announcement-bar__item">
+                                {% if item.url %}
+                                    <a href="{{ item.url }}" class="announcement-bar__link">{{ text }}</a>
+                                {% else %}
+                                    <span class="announcement-bar__text">{{ text }}</span>
+                                {% endif %}
+                            </span>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endif %}

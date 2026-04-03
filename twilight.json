@@ -21,6 +21,7 @@
         "component-square-photos",
         "component-store-features",
         "component-youtube",
+        "component-announcement-bar",
         "menu-images",
         "filters"
     ],
@@ -1070,6 +1071,131 @@
                     "required": false,
                     "minLength": 1,
                     "maxLength": 30
+                }
+            ]
+        },
+        {
+            "key": "a47b8c9d-0e1f-42a3-b4c5-d6e7f8a9b0c1",
+            "title": {
+                "en": "Announcement bar",
+                "ar": "شريط الإعلانات"
+            },
+            "icon": "sicon-format-text-alt",
+            "path": "home.announcement-bar",
+            "fields": [
+                {
+                    "type": "boolean",
+                    "icon": "sicon-toggle-off",
+                    "id": "is_visible",
+                    "label": "إظهار شريط الإعلانات",
+                    "description": "عرض أو إخفاء الشريط في الصفحة الرئيسية",
+                    "format": "switch",
+                    "required": false,
+                    "value": true,
+                    "selected": true
+                },
+                {
+                    "id": "announcements",
+                    "key": "b58c9d0e-1f2a-43b4-c5d6-e7f8a9b0c1d2",
+                    "type": "collection",
+                    "format": "collection",
+                    "label": "عناصر الإعلان",
+                    "description": null,
+                    "item_label": "إعلان",
+                    "icon": "sicon-list-add",
+                    "value": [
+                        {
+                            "announcements.text": "شحن مجاني للطلبات فوق ٢٠٠ ريال",
+                            "announcements.url": null
+                        },
+                        {
+                            "announcements.text": "تابعنا لأحدث العروض والخصومات",
+                            "announcements.url": null
+                        }
+                    ],
+                    "fields": [
+                        {
+                            "type": "string",
+                            "icon": "sicon-format-text-alt",
+                            "label": "نص الإعلان",
+                            "multilanguage": true,
+                            "id": "announcements.text",
+                            "value": null,
+                            "required": true,
+                            "format": "text",
+                            "description": "يظهر في الشريط المتحرك",
+                            "placeholder": "أدخل نص الإعلان...",
+                            "minLength": 1,
+                            "maxLength": 280
+                        },
+                        {
+                            "type": "items",
+                            "icon": "sicon-link",
+                            "label": "رابط (اختياري)",
+                            "id": "announcements.url",
+                            "value": null,
+                            "description": null,
+                            "required": false,
+                            "format": "variable-list",
+                            "searchable": true,
+                            "source": "custom",
+                            "sources": [
+                                {
+                                    "label": "منتج",
+                                    "key": "products",
+                                    "value": "products"
+                                },
+                                {
+                                    "label": "تصنيف",
+                                    "key": "categories",
+                                    "value": "categories"
+                                },
+                                {
+                                    "label": "ماركة تجارية",
+                                    "key": "brands",
+                                    "value": "brands"
+                                },
+                                {
+                                    "label": "صفحة تعريفية",
+                                    "key": "pages",
+                                    "value": "pages"
+                                },
+                                {
+                                    "label": "مقالة",
+                                    "key": "blog_articles",
+                                    "value": "blog_articles"
+                                },
+                                {
+                                    "label": "تصنيف ضمن المدونة",
+                                    "key": "blog_categories",
+                                    "value": "blog_categories"
+                                },
+                                {
+                                    "label": "التخفيضات",
+                                    "key": "offers_link",
+                                    "value": "offers_link"
+                                },
+                                {
+                                    "label": "الماركات التجارية",
+                                    "key": "brands_link",
+                                    "value": "brands_link"
+                                },
+                                {
+                                    "label": "المدونة",
+                                    "key": "blog_link",
+                                    "value": "blog_link"
+                                },
+                                {
+                                    "label": "رابط خارجي",
+                                    "key": "custom",
+                                    "value": "custom"
+                                }
+                            ]
+                        }
+                    ],
+                    "required": false,
+                    "minLength": 1,
+                    "maxLength": 20
                 }
             ]
         }

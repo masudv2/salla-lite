@@ -398,3 +398,56 @@
 .s-block--tabs-produtcs + .s-block--tabs-produtcs {
   padding-top: 2em;
 }
+
+/* Announcement bar (home page builder — marquee ticker) */
+.s-block--announcement-bar {
+  @apply w-full bg-gray-100 border-b border-gray-200/80 text-gray-800 text-sm;
+
+  .announcement-bar__viewport {
+    @apply overflow-hidden w-full;
+  }
+
+  .announcement-bar__inner {
+    display: flex;
+    width: max-content;
+    animation: announcement-marquee 45s linear infinite;
+  }
+
+  .announcement-bar__group {
+    @apply flex flex-nowrap items-center shrink-0 gap-3 px-6 py-2;
+  }
+
+  .announcement-bar__item {
+    @apply inline-flex items-center whitespace-nowrap shrink-0;
+
+    & + .announcement-bar__item::before {
+      content: '•';
+      @apply inline-block opacity-50 text-xs leading-none mx-1.5;
+    }
+  }
+
+  .announcement-bar__link {
+    @apply underline-offset-2 hover:underline text-inherit;
+  }
+
+  &:hover .announcement-bar__inner {
+    animation-play-state: paused;
+  }
+}
+
+[dir='rtl'] .s-block--announcement-bar .announcement-bar__inner {
+  animation-direction: reverse;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .s-block--announcement-bar .announcement-bar__inner {
+    animation: none;
+    @apply flex-wrap justify-center w-full max-w-none mx-auto;
+  }
+}
+
+@keyframes announcement-marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
