@@ -484,3 +484,61 @@
     @apply inline-flex items-center gap-2 font-bold text-sm text-primary hover:opacity-90 underline-offset-2 hover:underline;
   }
 }
+
+/* Promo cards grid (home page builder) */
+.s-block--promo-cards-grid {
+  @apply w-full;
+
+  .promo-cards-grid__head {
+    @apply mb-4 md:mb-8;
+  }
+
+  .promo-cards-grid__grid {
+    @apply grid grid-cols-1 gap-4 sm:gap-6;
+  }
+
+  .promo-cards-grid__grid--cols-2 {
+    @apply md:grid-cols-2;
+  }
+
+  .promo-cards-grid__grid--cols-3 {
+    @apply md:grid-cols-3;
+  }
+
+  .promo-cards-grid__grid--cols-4 {
+    @apply md:grid-cols-4;
+  }
+
+  .promo-cards-grid__card {
+    @apply h-full min-w-0;
+  }
+
+  .promo-cards-grid__card-link,
+  .promo-cards-grid__card-inner {
+    @apply flex h-full flex-col overflow-hidden rounded-lg border border-gray-200 bg-white shadow-sm transition-shadow duration-300;
+  }
+
+  .promo-cards-grid__card-link {
+    @apply text-inherit no-underline hover:shadow-default focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary;
+  }
+
+  .promo-cards-grid__media {
+    @apply relative aspect-[4/3] w-full overflow-hidden bg-gray-100;
+  }
+
+  .promo-cards-grid__img {
+    @apply h-full w-full object-cover;
+  }
+
+  .promo-cards-grid__content {
+    @apply flex flex-1 flex-col gap-1 p-4;
+  }
+
+  .promo-cards-grid__card-title {
+    @apply text-base font-bold leading-snug text-gray-900;
+  }
+
+  .promo-cards-grid__card-sub {
+    @apply text-sm leading-relaxed text-gray-600;
+  }
+}

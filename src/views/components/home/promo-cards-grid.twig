@@ -1,0 +1,83 @@
+{#
+| Variable               | Type    | Description                                                                  |
+|------------------------|---------|------------------------------------------------------------------------------|
+| component              | object  | Merchant fields from twilight.json (flat card1_* … card4_*)                  |
+| component.is_visible   | bool    | Enabled toggle                                                               |
+| component.section_title| ?string | Optional section heading                                                     |
+| component.desktop_columns | mixed | "2", "3", or "4" (dropdown)                                               |
+| component.cardN_*      | mixed   | Per-card image, title, subtitle, url                                         |
+| position               | int     | Home block order                                                             |
+#}
+{% if not component.is_visible %}
+{% else %}
+{% set colRaw = component.desktop_columns|default('3') %}
+{% set colKey = colRaw.value is defined ? colRaw.value : colRaw %}
+{% set colCount = colKey|default('3') %}
+{% if colCount not in ['2', '3', '4'] %}
+    {% set colCount = '3' %}
+{% endif %}
+{% set gridMod = colCount == '2' ? 'promo-cards-grid__grid--cols-2' : (colCount == '4' ? 'promo-cards-grid__grid--cols-4' : 'promo-cards-grid__grid--cols-3') %}
+{% set ph = 'images/placeholder.png'|asset %}
+<section class="s-block s-block--promo-cards-grid" data-promo-cards-grid="{{ position }}" data-desktop-cols="{{ colCount }}">
+    <div class="container">
+        {% if component.section_title|default('')|trim %}
+            <div class="s-block__title promo-cards-grid__head">
+                <div class="right-side">
+                    <h2>{{ component.section_title }}</h2>
+                </div>
+            </div>
+        {% endif %}
+        <div class="promo-cards-grid__grid {{ gridMod }}">
+            {% for n in [1, 2, 3, 4] %}
+                {% set img = attribute(component, 'card' ~ n ~ '_image') %}
+                {% set ttl = attribute(component, 'card' ~ n ~ '_title') %}
+                {% set sub = attribute(component, 'card' ~ n ~ '_subtitle') %}
+                {% set url = attribute(component, 'card' ~ n ~ '_url') %}
+                {% set titleTrim = ttl|default('')|trim %}
+                {% set hasImg = img|default('')|trim %}
+                {% set showCard = false %}
+                {% if n < 4 %}
+                    {% set showCard = hasImg or titleTrim %}
+                {% else %}
+                    {% set showCard = hasImg or titleTrim or sub|default('')|trim or url|default('') %}
+                {% endif %}
+                {% if showCard %}
+                    {% set src = hasImg ? img : ph %}
+                    {% set alt = titleTrim ? ttl|striptags|trim : ('promo card ' ~ n) %}
+                    <article class="promo-cards-grid__card">
+                        {% if url %}
+                            <a href="{{ url }}" class="promo-cards-grid__card-link">
+                                <div class="promo-cards-grid__media">
+                                    <img src="{{ src }}" alt="{{ alt|e('html_attr') }}" loading="lazy" width="640" height="480" decoding="async" class="promo-cards-grid__img">
+                                </div>
+                                <div class="promo-cards-grid__content">
+                                    {% if titleTrim %}
+                                        <h3 class="promo-cards-grid__card-title">{{ ttl }}</h3>
+                                    {% endif %}
+                                    {% if sub|default('')|trim %}
+                                        <p class="promo-cards-grid__card-sub">{{ sub }}</p>
+                                    {% endif %}
+                                </div>
+                            </a>
+                        {% else %}
+                            <div class="promo-cards-grid__card-inner">
+                                <div class="promo-cards-grid__media">
+                                    <img src="{{ src }}" alt="{{ alt|e('html_attr') }}" loading="lazy" width="640" height="480" decoding="async" class="promo-cards-grid__img">
+                                </div>
+                                <div class="promo-cards-grid__content">
+                                    {% if titleTrim %}
+                                        <h3 class="promo-cards-grid__card-title">{{ ttl }}</h3>
+                                    {% endif %}
+                                    {% if sub|default('')|trim %}
+                                        <p class="promo-cards-grid__card-sub">{{ sub }}</p>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        {% endif %}
+                    </article>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endif %}

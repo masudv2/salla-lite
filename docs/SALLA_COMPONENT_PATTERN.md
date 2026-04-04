@@ -103,7 +103,8 @@ If something does not show: confirm the commit is the one the store imports, har
 |-------|---------|------|-----------|
 | Announcement bar | `component-announcement-bar` | `home.announcement-bar` | `announcement-bar.twig` |
 | Promo strip | `component-promo-strip` | `home.promo-strip` | `promo-strip.twig` |
+| Promo cards grid | `component-promo-cards-grid` | `home.promo-cards-grid` | `promo-cards-grid.twig` |
 
-Editor titles: **Announcement bar** / **شريط الإعلانات**; **Promo strip** / **شريط ترويجي**.
+Editor titles: **Announcement bar** / **شريط الإعلانات**; **Promo strip** / **شريط ترويجي**; **Promo cards grid** / **بطاقات ترويجية (شبكة)**.
 
 Use these rows as templates when adding new blocks in §6.
