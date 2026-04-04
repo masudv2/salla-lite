@@ -430,10 +430,58 @@ salla-quantity-input[max='1']{
     @apply border border-gray-200 shadow-sm;
   }
 
-  /* Gallery: slightly stronger frame; salla-slider markup unchanged */
+  /* Single purchase module: options + price + preorder + QTY/ATC (+ gifting) */
+  .pdp-fc__purchase {
+    @apply divide-y divide-gray-200 overflow-hidden rounded-lg border border-gray-200 bg-white shadow-sm;
+  }
+
+  .pdp-fc__purchase-price,
+  .pdp-fc__purchase-preorder,
+  .pdp-fc__purchase-cta {
+    @apply border-0 shadow-none;
+  }
+
+  .pdp-fc__purchase-gifting {
+    @apply bg-gray-50/50 px-5 py-4;
+  }
+
+  /* Description + long-form trust content */
+  .pdp-fc__prose {
+    @apply rounded-lg border border-gray-200 bg-white px-4 py-5 text-sm leading-relaxed text-gray-800 sm:px-6 sm:text-base;
+  }
+
+  .pdp-fc__prose .article--main {
+    @apply max-w-none;
+  }
+
+  /* Installments / metadata / availability stack */
+  .pdp-fc__meta {
+    @apply mt-6;
+  }
+
+  /* Related products — same title chrome as homepage FC (not inside .s-block--fc-*) */
+  .pdp-fc__related {
+    .fc-home__head {
+      @apply relative z-10 mb-4 w-full md:mb-6;
+    }
+
+    .fc-home__title {
+      @apply text-lg font-bold text-gray-900;
+    }
+  }
+
+  /* Gallery: stronger frame + thumbs; salla-slider markup unchanged */
   salla-slider.details-slider.image-slider {
     .s-slider-container {
-      @apply border-gray-200 shadow-sm;
+      @apply overflow-hidden rounded-lg border border-gray-200 shadow-md;
     }
+
+    .swiper-slide {
+      @apply ring-0 ring-transparent;
+    }
+  }
+
+  .pdp-fc__gallery .slide--one-fourth img {
+    @apply ring-1 ring-gray-200;
   }
 }
