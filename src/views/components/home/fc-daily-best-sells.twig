@@ -1,0 +1,85 @@
+{#
+| Variable                  | Type   | Description                                                                  |
+|---------------------------|--------|------------------------------------------------------------------------------|
+| component                 | object | Twilight fields                                                              |
+| component.is_visible      | bool   | Toggle section                                                               |
+| component.section_title   | string | Section heading                                                              |
+| component.banner_image    | string | Side deal banner background                                                  |
+| component.banner_title    | string | Banner heading                                                               |
+| component.banner_subtitle | string | Banner copy                                                                  |
+| component.banner_cta_label| string | Optional CTA label                                                           |
+| component.banner_url      | ?string| Optional link for CTA                                                        |
+| component.product_source  | mixed  | latest | most_sales for slider                                               |
+| component.product_limit   | int    | Slider product count                                                         |
+| position                  | int    | Home block order                                                             |
+#}
+{% if component.is_visible %}
+{% set srcRaw = component.product_source|default('most_sales') %}
+{% set srcKey = srcRaw.value is defined ? srcRaw.value : srcRaw %}
+{% set lim = component.product_limit|default(6) %}
+{% set rawBg = component.banner_image|default('') %}
+{% set is_remote = rawBg|slice(0, 7) == 'http://' or rawBg|slice(0, 8) == 'https://' %}
+{% set bg = rawBg and is_remote ? rawBg : rawBg|asset %}
+{% set cta = component.banner_cta_label|default('')|trim %}
+{% set href = component.banner_url|default('') %}
+<section class="s-block s-block--fc-daily-best-sells lg:my-14 my-8" data-fc-daily-best-sells="{{ position }}">
+    <div class="container">
+        {% if component.section_title|default('')|trim %}
+            <div class="fc-dbs__head">
+                <h2 class="fc-dbs__section-title">{{ component.section_title }}</h2>
+            </div>
+        {% endif %}
+        <div class="fc-dbs__row">
+            <div class="fc-dbs__banner-wrap">
+                <div
+                    class="fc-dbs__banner"
+                    style="background: url({{ bg }}) no-repeat; background-size: cover; background-position: center;"
+                >
+                    <div class="fc-dbs__banner-inner">
+                        {% if component.banner_title|default('')|trim %}
+                            <h3 class="fc-dbs__banner-title">{{ component.banner_title }}</h3>
+                        {% endif %}
+                        {% if component.banner_subtitle|default('')|trim %}
+                            <p class="fc-dbs__banner-sub">{{ component.banner_subtitle }}</p>
+                        {% endif %}
+                        {% if cta and href %}
+                            <div class="fc-dbs__banner-actions">
+                                <a href="{{ href }}" class="fc-dbs__cta">
+                                    <span>{{ cta }}</span>
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="fc-dbs__cta-icon" width="14" height="14" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" aria-hidden="true">
+                                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                        <path d="M5 12l14 0" />
+                                        <path d="M13 18l6 -6" />
+                                        <path d="M13 6l6 6" />
+                                    </svg>
+                                </a>
+                            </div>
+                        {% elseif cta %}
+                            <div class="fc-dbs__banner-actions">
+                                <span class="fc-dbs__cta fc-dbs__cta--static">
+                                    <span>{{ cta }}</span>
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="fc-dbs__cta-icon" width="14" height="14" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" aria-hidden="true">
+                                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                        <path d="M5 12l14 0" />
+                                        <path d="M13 18l6 -6" />
+                                        <path d="M13 6l6 6" />
+                                    </svg>
+                                </span>
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            <div class="fc-dbs__products">
+                <salla-products-slider
+                    source="{{ srcKey }}"
+                    limit="{{ lim }}"
+                    source-value="{{ []|json_encode }}"
+                    slider-id="fc-daily-best-{{ position }}"
+                    block-title=" "
+                ></salla-products-slider>
+            </div>
+        </div>
+    </div>
+</section>
+{% endif %}

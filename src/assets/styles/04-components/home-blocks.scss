@@ -699,3 +699,111 @@
     @apply text-base font-normal leading-relaxed text-gray-800;
   }
 }
+
+/* FreshCart-style value props (4 columns, icons + text) */
+.s-block--fc-value-props {
+  .fc-vp__grid {
+    @apply flex flex-wrap gap-y-6;
+  }
+
+  .fc-vp__col {
+    @apply w-full px-3 md:w-1/2 lg:w-1/4;
+  }
+
+  .fc-vp__cell {
+    @apply flex flex-col gap-4;
+  }
+
+  .fc-vp__icon-wrap {
+    @apply inline-block;
+  }
+
+  .fc-vp__icon {
+    @apply h-12 w-12 object-contain;
+  }
+
+  .fc-vp__text {
+    @apply flex flex-col gap-2 text-start;
+  }
+
+  .fc-vp__title {
+    @apply text-base font-semibold leading-snug text-gray-900;
+  }
+
+  .fc-vp__body {
+    @apply text-sm leading-relaxed text-gray-700;
+  }
+}
+
+/* FreshCart-style popular products (product list chrome only — cards from Salla) */
+.s-block--fc-popular-products {
+  .fc-pop__head {
+    @apply mb-6 w-full;
+  }
+
+  .fc-pop__title {
+    @apply text-lg font-bold text-gray-900;
+  }
+}
+
+/* FreshCart-style daily best: deal banner + product slider */
+.s-block--fc-daily-best-sells {
+  .fc-dbs__head {
+    @apply mb-6 w-full;
+  }
+
+  .fc-dbs__section-title {
+    @apply text-lg font-bold text-gray-900;
+  }
+
+  .fc-dbs__row {
+    @apply flex flex-col gap-4 xl:flex-row xl:items-stretch;
+  }
+
+  .fc-dbs__banner-wrap {
+    @apply w-full shrink-0 xl:w-1/4 xl:min-w-[280px] xl:max-w-sm;
+  }
+
+  .fc-dbs__banner {
+    @apply flex min-h-[320px] flex-col rounded-lg pt-8 px-6 xl:h-[470px];
+  }
+
+  .fc-dbs__banner-inner {
+    @apply flex flex-col gap-5;
+  }
+
+  .fc-dbs__banner-title {
+    @apply text-lg font-bold leading-snug text-white;
+  }
+
+  .fc-dbs__banner-sub {
+    @apply text-base font-normal leading-relaxed text-white;
+  }
+
+  .fc-dbs__banner-actions {
+    @apply flex flex-wrap;
+  }
+
+  .fc-dbs__cta,
+  .fc-dbs__cta--static {
+    @apply inline-flex items-center gap-x-2 rounded border border-green-600 bg-green-600 px-4 py-2.5 text-sm font-semibold text-white no-underline transition-colors;
+    @apply hover:border-green-700 hover:bg-green-700 hover:text-white;
+    @apply focus:outline-none focus:ring-4 focus:ring-green-300;
+  }
+
+  a.fc-dbs__cta {
+    @apply cursor-pointer;
+  }
+
+  .fc-dbs__cta--static {
+    @apply cursor-default;
+  }
+
+  .fc-dbs__cta-icon {
+    @apply inline-block shrink-0 rtl:-scale-x-100;
+  }
+
+  .fc-dbs__products {
+    @apply min-w-0 flex-1;
+  }
+}

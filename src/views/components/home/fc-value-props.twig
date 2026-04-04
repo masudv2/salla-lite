@@ -1,0 +1,38 @@
+{#
+| Variable              | Type     | Description                                                                  |
+|-----------------------|----------|------------------------------------------------------------------------------|
+| component             | object   | Twilight fields — four icon + title + body rows                              |
+| component.is_visible  | bool     | Toggle section                                                               |
+| component.items       | object[] | items[].icon, items[].title, items[].body                                    |
+| position              | int      | Block order on home                                                          |
+#}
+{% if component.is_visible and component.items|length %}
+<section class="s-block s-block--fc-value-props my-8 lg:my-14" data-fc-value-props="{{ position }}">
+    <div class="container">
+        <div class="fc-vp__grid">
+            {% for item in component.items %}
+                {% set raw = item.icon|default('') %}
+                {% if raw|trim %}
+                    {% set is_remote = raw|slice(0, 7) == 'http://' or raw|slice(0, 8) == 'https://' %}
+                    {% set iconSrc = is_remote ? raw : raw|asset %}
+                    <div class="fc-vp__col">
+                        <div class="fc-vp__cell">
+                            <div class="fc-vp__icon-wrap">
+                                <img src="{{ iconSrc }}" alt="" class="fc-vp__icon" width="48" height="48" loading="lazy" />
+                            </div>
+                            <div class="fc-vp__text">
+                                {% if item.title|default('')|trim %}
+                                    <h3 class="fc-vp__title">{{ item.title }}</h3>
+                                {% endif %}
+                                {% if item.body|default('')|trim %}
+                                    <p class="fc-vp__body">{{ item.body }}</p>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endif %}

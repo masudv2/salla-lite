@@ -27,8 +27,11 @@
         "component-fc-hero",
         "component-fc-featured-categories",
         "component-fc-promo-cards",
+        "component-fc-value-props",
         "menu-images",
-        "filters"
+        "filters",
+        "component-fc-popular-products",
+        "component-fc-daily-best-sells"
     ],
     "settings": [
         {
@@ -2359,6 +2362,345 @@
                             ]
                         }
                     ]
+                }
+            ]
+        },
+        {
+            "key": "e7f8a9b0-c1d2-4345-6789-abcdef012345",
+            "title": {
+                "en": "FreshCart-style value props",
+                "ar": "مزايا المتجر (FreshCart)"
+            },
+            "icon": "sicon-heart",
+            "path": "home.fc-value-props",
+            "fields": [
+                {
+                    "type": "boolean",
+                    "icon": "sicon-toggle-off",
+                    "id": "is_visible",
+                    "label": "إظهار القسم",
+                    "description": "عرض أو إخفاء قسم المزايا",
+                    "format": "switch",
+                    "required": false,
+                    "value": true,
+                    "selected": true
+                },
+                {
+                    "id": "items",
+                    "key": "f8a9b0c1-d2e3-4455-6789-abcdef012345",
+                    "type": "collection",
+                    "format": "collection",
+                    "label": "البنود (٤ كحد أقصى)",
+                    "item_label": "بند",
+                    "icon": "sicon-list-add",
+                    "required": true,
+                    "minLength": 4,
+                    "maxLength": 4,
+                    "value": [
+                        {
+                            "items.icon": "images/fc-value-props/clock.svg",
+                            "items.title": "توصيل خلال 10 دقائق",
+                            "items.body": "اطلب الآن ونوصل طلبك بأسرع وقت من أقرب فرع."
+                        },
+                        {
+                            "items.icon": "images/fc-value-props/gift.svg",
+                            "items.title": "أفضل الأسعار والعروض",
+                            "items.body": "أسعار تنافسية وعروض وخصومات مميزة على مشترياتك."
+                        },
+                        {
+                            "items.icon": "images/fc-value-props/package.svg",
+                            "items.title": "تنوع كبير في المنتجات",
+                            "items.body": "آلاف المنتجات عبر فئات متعددة لتلبية احتياجاتك اليومية."
+                        },
+                        {
+                            "items.icon": "images/fc-value-props/refresh-cw.svg",
+                            "items.title": "إرجاع سهل",
+                            "items.body": "سياسة إرجاع مرنة عند عدم الرضا عن المنتج."
+                        }
+                    ],
+                    "fields": [
+                        {
+                            "type": "string",
+                            "icon": "sicon-image",
+                            "id": "items.icon",
+                            "label": "أيقونة (صورة)",
+                            "format": "image",
+                            "required": true,
+                            "value": null
+                        },
+                        {
+                            "type": "string",
+                            "icon": "sicon-format-text-alt",
+                            "label": "العنوان",
+                            "multilanguage": true,
+                            "id": "items.title",
+                            "format": "text",
+                            "required": true,
+                            "minLength": 1,
+                            "maxLength": 120
+                        },
+                        {
+                            "type": "string",
+                            "icon": "sicon-typography",
+                            "label": "الوصف",
+                            "multilanguage": true,
+                            "id": "items.body",
+                            "format": "textarea",
+                            "required": true,
+                            "minLength": 1,
+                            "maxLength": 500
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "key": "a9b0c1d2-e3f4-4567-8901-abcdefabcdef",
+            "title": {
+                "en": "FreshCart-style popular products",
+                "ar": "منتجات شائعة (FreshCart)"
+            },
+            "icon": "sicon-product",
+            "path": "home.fc-popular-products",
+            "fields": [
+                {
+                    "type": "boolean",
+                    "icon": "sicon-toggle-off",
+                    "id": "is_visible",
+                    "label": "إظهار القسم",
+                    "format": "switch",
+                    "required": false,
+                    "value": true,
+                    "selected": true
+                },
+                {
+                    "type": "string",
+                    "icon": "sicon-format-text-alt",
+                    "label": "عنوان القسم",
+                    "multilanguage": true,
+                    "id": "section_title",
+                    "format": "text",
+                    "required": true,
+                    "minLength": 1,
+                    "maxLength": 120,
+                    "value": "المنتجات الأكثر شعبية"
+                },
+                {
+                    "id": "product_source",
+                    "type": "items",
+                    "format": "dropdown-list",
+                    "label": "مصدر المنتجات",
+                    "icon": "sicon-list",
+                    "selected": [
+                        {
+                            "label": "الأكثر مبيعاً",
+                            "value": "most_sales",
+                            "key": "fc-pop-ms"
+                        }
+                    ],
+                    "options": [
+                        {
+                            "label": "آخر المنتجات",
+                            "value": "latest",
+                            "key": "fc-pop-lt"
+                        },
+                        {
+                            "label": "الأكثر مبيعاً",
+                            "value": "most_sales",
+                            "key": "fc-pop-ms"
+                        }
+                    ],
+                    "source": "Manual",
+                    "required": true
+                },
+                {
+                    "id": "product_limit",
+                    "type": "number",
+                    "format": "integer",
+                    "label": "عدد المنتجات",
+                    "icon": "sicon-pencil-ruler",
+                    "value": 10,
+                    "required": true,
+                    "minimum": 4,
+                    "maximum": 24
+                }
+            ]
+        },
+        {
+            "key": "b0c1d2e3-f4a5-4678-9012-bcdefabcdef01",
+            "title": {
+                "en": "FreshCart-style daily best",
+                "ar": "أفضل العروض اليومية (FreshCart)"
+            },
+            "icon": "sicon-offer",
+            "path": "home.fc-daily-best-sells",
+            "fields": [
+                {
+                    "type": "boolean",
+                    "icon": "sicon-toggle-off",
+                    "id": "is_visible",
+                    "label": "إظهار القسم",
+                    "format": "switch",
+                    "required": false,
+                    "value": true,
+                    "selected": true
+                },
+                {
+                    "type": "string",
+                    "icon": "sicon-format-text-alt",
+                    "label": "عنوان القسم",
+                    "multilanguage": true,
+                    "id": "section_title",
+                    "format": "text",
+                    "required": true,
+                    "minLength": 1,
+                    "maxLength": 120,
+                    "value": "أفضل العروض اليومية"
+                },
+                {
+                    "type": "string",
+                    "icon": "sicon-image",
+                    "id": "banner_image",
+                    "label": "صورة البانر الجانبي",
+                    "format": "image",
+                    "required": true,
+                    "value": "images/fc-daily-best/banner-deal.jpg"
+                },
+                {
+                    "type": "string",
+                    "icon": "sicon-format-text-alt",
+                    "label": "عنوان البانر",
+                    "multilanguage": true,
+                    "id": "banner_title",
+                    "format": "text",
+                    "required": true,
+                    "minLength": 1,
+                    "maxLength": 200,
+                    "value": "حبوب قهوة عضوية 100٪"
+                },
+                {
+                    "type": "string",
+                    "icon": "sicon-typography",
+                    "label": "وصف البانر",
+                    "multilanguage": true,
+                    "id": "banner_subtitle",
+                    "format": "textarea",
+                    "required": true,
+                    "minLength": 1,
+                    "maxLength": 400,
+                    "value": "احصل على أفضل سعر قبل انتهاء العرض."
+                },
+                {
+                    "type": "string",
+                    "icon": "sicon-format-text-alt",
+                    "label": "نص زر البانر",
+                    "multilanguage": true,
+                    "id": "banner_cta_label",
+                    "format": "text",
+                    "required": false,
+                    "maxLength": 80,
+                    "value": "تسوق الآن"
+                },
+                {
+                    "type": "items",
+                    "icon": "sicon-link",
+                    "id": "banner_url",
+                    "label": "رابط البانر (اختياري)",
+                    "format": "variable-list",
+                    "searchable": true,
+                    "source": "custom",
+                    "sources": [
+                        {
+                            "label": "منتج",
+                            "key": "products",
+                            "value": "products"
+                        },
+                        {
+                            "label": "تصنيف",
+                            "key": "categories",
+                            "value": "categories"
+                        },
+                        {
+                            "label": "ماركة تجارية",
+                            "key": "brands",
+                            "value": "brands"
+                        },
+                        {
+                            "label": "صفحة تعريفية",
+                            "key": "pages",
+                            "value": "pages"
+                        },
+                        {
+                            "label": "مقالة",
+                            "key": "blog_articles",
+                            "value": "blog_articles"
+                        },
+                        {
+                            "label": "تصنيف ضمن المدونة",
+                            "key": "blog_categories",
+                            "value": "blog_categories"
+                        },
+                        {
+                            "label": "التخفيضات",
+                            "key": "offers_link",
+                            "value": "offers_link"
+                        },
+                        {
+                            "label": "الماركات التجارية",
+                            "key": "brands_link",
+                            "value": "brands_link"
+                        },
+                        {
+                            "label": "المدونة",
+                            "key": "blog_link",
+                            "value": "blog_link"
+                        },
+                        {
+                            "label": "رابط خارجي",
+                            "key": "custom",
+                            "value": "custom"
+                        }
+                    ],
+                    "required": false
+                },
+                {
+                    "id": "product_source",
+                    "type": "items",
+                    "format": "dropdown-list",
+                    "label": "مصدر منتجات الشريط",
+                    "icon": "sicon-list",
+                    "selected": [
+                        {
+                            "label": "الأكثر مبيعاً",
+                            "value": "most_sales",
+                            "key": "fc-dbs-ms"
+                        }
+                    ],
+                    "options": [
+                        {
+                            "label": "آخر المنتجات",
+                            "value": "latest",
+                            "key": "fc-dbs-lt"
+                        },
+                        {
+                            "label": "الأكثر مبيعاً",
+                            "value": "most_sales",
+                            "key": "fc-dbs-ms"
+                        }
+                    ],
+                    "source": "Manual",
+                    "required": true
+                },
+                {
+                    "id": "product_limit",
+                    "type": "number",
+                    "format": "integer",
+                    "label": "عدد المنتجات في الشريط",
+                    "icon": "sicon-pencil-ruler",
+                    "value": 6,
+                    "required": true,
+                    "minimum": 2,
+                    "maximum": 12
                 }
             ]
         }

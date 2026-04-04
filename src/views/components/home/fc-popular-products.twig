@@ -1,0 +1,30 @@
+{#
+| Variable                  | Type   | Description                                                                  |
+|---------------------------|--------|------------------------------------------------------------------------------|
+| component                 | object | Twilight fields                                                              |
+| component.is_visible      | bool   | Toggle section                                                               |
+| component.section_title   | string | Section heading (multilanguage)                                              |
+| component.product_source  | mixed  | latest | most_sales                                                        |
+| component.product_limit   | int    | Max products                                                                 |
+| position                  | int    | Home block order                                                             |
+#}
+{% if component.is_visible %}
+{% set srcRaw = component.product_source|default('most_sales') %}
+{% set srcKey = srcRaw.value is defined ? srcRaw.value : srcRaw %}
+{% set lim = component.product_limit|default(10) %}
+<section class="s-block s-block--fc-popular-products lg:my-14 my-8" data-fc-popular-products="{{ position }}">
+    <div class="container">
+        {% if component.section_title|default('')|trim %}
+            <div class="fc-pop__head">
+                <h2 class="fc-pop__title">{{ component.section_title }}</h2>
+            </div>
+        {% endif %}
+        <salla-products-list
+            source="{{ srcKey }}"
+            limit="{{ lim }}"
+            source-value="{{ []|json_encode }}"
+            class="fc-pop__list horizontal-products horizontal-cards"
+        ></salla-products-list>
+    </div>
+</section>
+{% endif %}

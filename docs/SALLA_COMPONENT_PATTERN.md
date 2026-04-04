@@ -107,7 +107,10 @@ If something does not show: confirm the commit is the one the store imports, har
 | FreshCart-style hero | `component-fc-hero` | `home.fc-hero` | `fc-hero.twig` |
 | FreshCart-style featured categories | `component-fc-featured-categories` | `home.fc-featured-categories` | `fc-featured-categories.twig` |
 | FreshCart-style promo cards | `component-fc-promo-cards` | `home.fc-promo-cards` | `fc-promo-cards.twig` |
+| FreshCart-style value props | `component-fc-value-props` | `home.fc-value-props` | `fc-value-props.twig` |
+| FreshCart-style popular products | `component-fc-popular-products` | `home.fc-popular-products` | `fc-popular-products.twig` |
+| FreshCart-style daily best sells | `component-fc-daily-best-sells` | `home.fc-daily-best-sells` | `fc-daily-best-sells.twig` |
 
-Editor titles: **Announcement bar** / **شريط الإعلانات**; **Promo strip** / **شريط ترويجي**; **Promo cards grid** / **بطاقات ترويجية (شبكة)**; **FreshCart-style hero** / **بانر رئيسي (FreshCart)**; **FreshCart-style featured categories** / **تصنيفات مميزة (FreshCart)**; **FreshCart-style promo cards** / **بطاقات ترويجية (FreshCart)**.
+Editor titles: **Announcement bar** / **شريط الإعلانات**; **Promo strip** / **شريط ترويجي**; **Promo cards grid** / **بطاقات ترويجية (شبكة)**; **FreshCart-style hero** / **بانر رئيسي (FreshCart)**; **FreshCart-style featured categories** / **تصنيفات مميزة (FreshCart)**; **FreshCart-style promo cards** / **بطاقات ترويجية (FreshCart)**; **FreshCart-style value props** / **مزايا المتجر (FreshCart)**; **FreshCart-style popular products** / **منتجات شائعة (FreshCart)**; **FreshCart-style daily best** / **أفضل العروض اليومية (FreshCart)**.
 
 Use these rows as templates when adding new blocks in §6.
