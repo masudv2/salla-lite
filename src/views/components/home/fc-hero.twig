@@ -1,0 +1,88 @@
+{#
+| Variable                    | Type     | Description                                                                  |
+|-----------------------------|----------|------------------------------------------------------------------------------|
+| component                   | object   | Twilight fields for FreshCart-style hero                                     |
+| component.is_visible        | bool     | Toggle section                                                             |
+| component.slides            | object[] | Slides with image, badge, titles, description, CTA                         |
+| position                    | int      | Block order on home                                                        |
+#}
+{% if component.is_visible and component.slides|length %}
+{% set slide_count = component.slides|length %}
+<section class="s-block s-block--fc-hero mt-8" data-fc-hero="{{ position }}">
+    <div class="container">
+        <salla-slider
+            id="fc-hero-slider-{{ position }}"
+            class="fc-hero__slider"
+            auto-play
+            static-when-single
+            pagination
+            type="fullwidth"
+            slider-config='{"lazy":"false"}'
+            {% if slide_count < 2 %}show-controls="false"{% endif %}
+        >
+            <div slot="items">
+                {% for slide in component.slides %}
+                    {% set raw = slide.image|default('') %}
+                    {% set is_remote = raw|slice(0, 7) == 'http://' or raw|slice(0, 8) == 'https://' %}
+                    {% set bg = raw and is_remote ? raw : raw|asset %}
+                    <div
+                        class="swiper-slide fc-hero__slide"
+                        style="background: url({{ bg }}) no-repeat; background-size: cover; border-radius: 0.5rem; background-position: center;"
+                    >
+                        <div class="fc-hero__inner {% if loop.index == 2 %}fc-hero__inner--slide2{% endif %}">
+                            {% if slide.badge|default('')|trim %}
+                                <span class="fc-hero__badge">{{ slide.badge }}</span>
+                            {% endif %}
+                            <div class="fc-hero__text-block">
+                                {% if loop.first %}
+                                    <h1 class="fc-hero__heading">
+                                        {{ slide.title }}
+                                        {% if slide.title_extra_line|default('')|trim or slide.title_highlight|default('')|trim %}
+                                            <br />
+                                            {% if slide.title_extra_line|default('')|trim %}{{ slide.title_extra_line }}{% endif %}{% if slide.title_highlight|default('')|trim %}<span class="text-green-600">{{ slide.title_highlight }}</span>{% endif %}
+                                        {% endif %}
+                                    </h1>
+                                {% else %}
+                                    <h2 class="fc-hero__heading">
+                                        {{ slide.title }}
+                                        {% if slide.title_extra_line|default('')|trim or slide.title_highlight|default('')|trim %}
+                                            <br />
+                                            {% if slide.title_extra_line|default('')|trim %}{{ slide.title_extra_line }}{% endif %}{% if slide.title_highlight|default('')|trim %}<span class="text-green-600">{{ slide.title_highlight }}</span>{% endif %}
+                                        {% endif %}
+                                    </h2>
+                                {% endif %}
+                                {% if slide.description|default('')|trim %}
+                                    <p class="fc-hero__sub">{{ slide.description }}</p>
+                                {% endif %}
+                            </div>
+                            {% if slide.cta_label|default('')|trim %}
+                                {% if slide.cta_url %}
+                                    <a href="{{ slide.cta_url }}" class="fc-hero__cta">
+                                        {{ slide.cta_label }}
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="fc-hero__cta-icon" width="14" height="14" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" aria-hidden="true">
+                                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                            <path d="M5 12l14 0" />
+                                            <path d="M13 18l6 -6" />
+                                            <path d="M13 6l6 6" />
+                                        </svg>
+                                    </a>
+                                {% else %}
+                                    <span class="fc-hero__cta fc-hero__cta--static">
+                                        {{ slide.cta_label }}
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="fc-hero__cta-icon" width="14" height="14" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" aria-hidden="true">
+                                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                            <path d="M5 12l14 0" />
+                                            <path d="M13 18l6 -6" />
+                                            <path d="M13 6l6 6" />
+                                        </svg>
+                                    </span>
+                                {% endif %}
+                            {% endif %}
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </salla-slider>
+    </div>
+</section>
+{% endif %}
