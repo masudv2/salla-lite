@@ -16,11 +16,11 @@
     {% set colCount = '2' %}
 {% endif %}
 {% set gridMod = colCount == '2' ? 'fc-promo__grid--cols-2' : (colCount == '4' ? 'fc-promo__grid--cols-4' : 'fc-promo__grid--cols-3') %}
-<section class="s-block s-block--fc-promo-cards mt-8" data-fc-promo-cards="{{ position }}" data-desktop-cols="{{ colCount }}">
+<section class="s-block s-block--fc-promo-cards" data-fc-promo-cards="{{ position }}" data-desktop-cols="{{ colCount }}">
     <div class="container">
         {% if component.section_title|default('')|trim %}
-            <div class="fc-promo__head">
-                <h2 class="fc-promo__section-title">{{ component.section_title }}</h2>
+            <div class="fc-home__head">
+                <h2 class="fc-home__title">{{ component.section_title }}</h2>
             </div>
         {% endif %}
         <div class="fc-promo__grid {{ gridMod }}">

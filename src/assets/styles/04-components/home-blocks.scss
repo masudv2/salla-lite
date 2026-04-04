@@ -543,6 +543,23 @@
   }
 }
 
+/*
+  FreshCart line — shared section chrome (head + title)
+  Used by: fc-featured-categories, fc-promo-cards, fc-popular-products, fc-daily-best-sells
+*/
+.s-block--fc-featured-categories,
+.s-block--fc-promo-cards,
+.s-block--fc-popular-products,
+.s-block--fc-daily-best-sells {
+  .fc-home__head {
+    @apply relative z-10 mb-4 w-full md:mb-6;
+  }
+
+  .fc-home__title {
+    @apply text-lg font-bold text-gray-900;
+  }
+}
+
 /* FreshCart-style hero (scoped — do not use global .btn) */
 .s-block--fc-hero {
   .fc-hero__slider {
@@ -579,7 +596,7 @@
 
   .fc-hero__cta,
   .fc-hero__cta--static {
-    @apply inline-flex cursor-default items-center gap-x-2 border border-gray-800 bg-gray-800 px-4 py-2.5 text-sm font-semibold text-white no-underline transition-colors;
+    @apply inline-flex cursor-default items-center gap-x-2 rounded-md border border-gray-800 bg-gray-800 px-4 py-2.5 text-sm font-semibold text-white no-underline transition-colors;
     @apply hover:border-gray-900 hover:bg-gray-900 hover:text-white;
     @apply focus:outline-none focus:ring-4 focus:ring-gray-300;
   }
@@ -600,14 +617,6 @@
 
 /* FreshCart-style featured categories (scoped) */
 .s-block--fc-featured-categories {
-  .fc-fcats__head {
-    @apply relative z-10 mb-4 w-full;
-  }
-
-  .fc-fcats__section-title {
-    @apply text-lg font-bold text-gray-900;
-  }
-
   .fc-fcats__slider {
     @apply py-8 md:py-12;
   }
@@ -621,7 +630,7 @@
   }
 
   .fc-fcats__card {
-    @apply relative h-full break-words rounded-lg border border-gray-300 bg-white transition duration-75 ease-in-out;
+    @apply relative h-full break-words rounded-lg border border-gray-200 bg-white shadow-sm transition duration-75 ease-in-out;
     @apply hover:border-green-600 hover:shadow-md hover:duration-500;
   }
 
@@ -649,16 +658,8 @@
 
 /* FreshCart-style promo cards grid (scoped — background tiles, optional whole-card link) */
 .s-block--fc-promo-cards {
-  .fc-promo__head {
-    @apply mb-4 w-full md:mb-8;
-  }
-
-  .fc-promo__section-title {
-    @apply text-lg font-bold text-gray-900;
-  }
-
   .fc-promo__grid {
-    @apply grid grid-cols-1 gap-2 lg:gap-6;
+    @apply grid grid-cols-1 gap-3 md:gap-4 lg:gap-6;
   }
 
   .fc-promo__grid--cols-2 {
@@ -735,27 +736,8 @@
   }
 }
 
-/* FreshCart-style popular products (product list chrome only — cards from Salla) */
-.s-block--fc-popular-products {
-  .fc-pop__head {
-    @apply mb-6 w-full;
-  }
-
-  .fc-pop__title {
-    @apply text-lg font-bold text-gray-900;
-  }
-}
-
 /* FreshCart-style daily best: deal banner + product slider */
 .s-block--fc-daily-best-sells {
-  .fc-dbs__head {
-    @apply mb-6 w-full;
-  }
-
-  .fc-dbs__section-title {
-    @apply text-lg font-bold text-gray-900;
-  }
-
   .fc-dbs__row {
     @apply flex flex-col gap-4 xl:flex-row xl:items-stretch;
   }
@@ -786,7 +768,7 @@
 
   .fc-dbs__cta,
   .fc-dbs__cta--static {
-    @apply inline-flex items-center gap-x-2 rounded border border-green-600 bg-green-600 px-4 py-2.5 text-sm font-semibold text-white no-underline transition-colors;
+    @apply inline-flex items-center gap-x-2 rounded-md border border-green-600 bg-green-600 px-4 py-2.5 text-sm font-semibold text-white no-underline transition-colors;
     @apply hover:border-green-700 hover:bg-green-700 hover:text-white;
     @apply focus:outline-none focus:ring-4 focus:ring-green-300;
   }

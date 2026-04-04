@@ -7,7 +7,7 @@
 | position              | int      | Block order on home                                                          |
 #}
 {% if component.is_visible and component.items|length %}
-<section class="s-block s-block--fc-value-props my-8 lg:my-14" data-fc-value-props="{{ position }}">
+<section class="s-block s-block--fc-value-props" data-fc-value-props="{{ position }}">
     <div class="container">
         <div class="fc-vp__grid">
             {% for item in component.items %}

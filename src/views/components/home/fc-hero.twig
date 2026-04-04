@@ -8,7 +8,7 @@
 #}
 {% if component.is_visible and component.slides|length %}
 {% set slide_count = component.slides|length %}
-<section class="s-block s-block--fc-hero mt-8" data-fc-hero="{{ position }}">
+<section class="s-block s-block--fc-hero" data-fc-hero="{{ position }}">
     <div class="container">
         <salla-slider
             id="fc-hero-slider-{{ position }}"

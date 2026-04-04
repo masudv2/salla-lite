@@ -12,11 +12,11 @@
 {% set srcRaw = component.product_source|default('most_sales') %}
 {% set srcKey = srcRaw.value is defined ? srcRaw.value : srcRaw %}
 {% set lim = component.product_limit|default(10) %}
-<section class="s-block s-block--fc-popular-products lg:my-14 my-8" data-fc-popular-products="{{ position }}">
+<section class="s-block s-block--fc-popular-products" data-fc-popular-products="{{ position }}">
     <div class="container">
         {% if component.section_title|default('')|trim %}
-            <div class="fc-pop__head">
-                <h2 class="fc-pop__title">{{ component.section_title }}</h2>
+            <div class="fc-home__head">
+                <h2 class="fc-home__title">{{ component.section_title }}</h2>
             </div>
         {% endif %}
         <salla-products-list

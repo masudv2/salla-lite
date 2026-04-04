@@ -22,11 +22,11 @@
 {% set bg = rawBg and is_remote ? rawBg : rawBg|asset %}
 {% set cta = component.banner_cta_label|default('')|trim %}
 {% set href = component.banner_url|default('') %}
-<section class="s-block s-block--fc-daily-best-sells lg:my-14 my-8" data-fc-daily-best-sells="{{ position }}">
+<section class="s-block s-block--fc-daily-best-sells" data-fc-daily-best-sells="{{ position }}">
     <div class="container">
         {% if component.section_title|default('')|trim %}
-            <div class="fc-dbs__head">
-                <h2 class="fc-dbs__section-title">{{ component.section_title }}</h2>
+            <div class="fc-home__head">
+                <h2 class="fc-home__title">{{ component.section_title }}</h2>
             </div>
         {% endif %}
         <div class="fc-dbs__row">

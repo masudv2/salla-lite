@@ -83,13 +83,14 @@
 #}
 {% extends "layouts.master" %}
 {% block content %}
+<div class="pdp-fc">
     <div class="container">
         {# add breadcumbs container in pages to make a space in case breadcrumbs is off #}
         <nav class="breadcrumbs w-full py-5">
             <salla-breadcrumb></salla-breadcrumb>
         </nav>
-        <div class="flex flex-col items-start md:flex-row" id="product-{{ product.id }}">
-            <div class="sidebar md:sticky top-24 w-full md:!w-2/4 rtl:ml-8 ltr:mr-8 pb-8 md:pb-16 overflow-hidden shrink-0">
+        <div class="pdp-fc__grid flex flex-col items-start md:flex-row" id="product-{{ product.id }}">
+            <div class="pdp-fc__gallery sidebar md:sticky top-24 w-full md:!w-2/4 rtl:ml-8 ltr:mr-8 pb-8 md:pb-16 overflow-hidden shrink-0">
                 {% set has_many_images = product.images|length > 1 %}
                 <salla-slider
                         id="details-slider-{{ product.id }}"
@@ -180,7 +181,7 @@
                 </salla-slider>
             </div>
 
-            <div class="main-content md:sticky md:overflow-hidden top-24 w-full md:w-2/4 md:pb-16">
+            <div class="pdp-fc__buy main-content md:sticky md:overflow-hidden top-24 w-full md:w-2/4 md:pb-16">
 
                 {% hook 'product:single.description.start' %}
 
@@ -195,7 +196,7 @@
                     </div>
                 {% endif %}
 
-                <h1 class="text-xl md:text-2xl leading-10 font-bold mb-6 text-gray-800">{{ product.name }}</h1>
+                <h1 class="pdp-fc__title text-2xl md:text-3xl font-bold leading-tight text-gray-900 mb-4">{{ product.name }}</h1>
 
                 {% if product.subtitle %}
                     <h2 class="product-entry__sub-title text-sm text-gray-500 leading-6 mb-2.5">
@@ -211,18 +212,20 @@
                 {% if product.is_taxable %}
                     <small class="color-grey">{{ trans('pages.products.tax_included') }}</small>
                 {% endif %}
-                {# Price #}
-                <div class="flex whitespace-nowrap gap-4 items-center">
+                {# Price (summary — not wired to product.js; form block below has .total-price / .price-wrapper) #}
+                <div class="pdp-fc__price-summary mb-6 rounded-lg border border-gray-200 bg-gray-50/80 px-4 py-3 md:px-5 md:py-4">
+                <div class="flex flex-wrap whitespace-normal gap-x-4 gap-y-1 items-baseline">
                   <div class="{{ product.is_on_sale ? '' : 'hidden' }} space-x-2 rtl:space-x-reverse whitespace-nowrap">
-                      <p class="text-red-800 font-bold text-xl inline-block">{{product.sale_price|money}}</p>
+                      <p class="text-red-800 font-bold text-xl md:text-2xl inline-block">{{product.sale_price|money}}</p>
                       <span class="text-gray-500 line-through">{{product.regular_price|money}}</span>
                   </div>
-                  <div class="gap-4 {{ product.is_on_sale ? 'hidden' : 'flex' }}">
+                  <div class="gap-4 {{ product.is_on_sale ? 'hidden' : 'flex' }} flex-wrap items-baseline">
                       {% if product.starting_price %} 
-                          <span class="">{{ trans('pages.products.starting_price') }}</span>
+                          <span class="text-sm text-gray-600">{{ trans('pages.products.starting_price') }}</span>
                       {% endif %} 
-                          <p class=" font-bold text-xl inline-block"> {{product.starting_price ? product.starting_price|money : product.price|money }}</p>
+                          <p class="font-bold text-xl md:text-2xl inline-block text-gray-900"> {{product.starting_price ? product.starting_price|money : product.price|money }}</p>
                   </div>
+                </div>
                 </div>
 
                 <div class="product__description p-2 px-5 sm:p-1 leading-7 mb-3">
@@ -287,7 +290,7 @@
                     </div>
                 {% endif %}
                 {% if product.sku %}
-                    <div class="mb-4 flex justify-between sm:grid sm:grid-cols-3 bg-white rounded-md px-4 py-2">
+                    <div class="pdp-fc__card mb-4 flex justify-between sm:grid sm:grid-cols-3 px-4 py-3">
                         <div class="flex items-center">
                             <i class="sicon-barcode mx-1"></i>
                             {{ trans('pages.products.sku') }}
@@ -304,7 +307,7 @@
                 {% endif %}
 
                 {% if product.show_availability %}
-                    <section class="bg-white p-5 rounded-md mb-5 last:mb-0">
+                    <section class="pdp-fc__card p-5 mb-5 last:mb-0">
                         <div class="center-between">
                             <label class="flex items-center text-base">
                                 <span class="sicon-location rtl:ml-1 ltr:mr-1"></span>
@@ -342,10 +345,10 @@
 
                     {% hook 'product:single.form.end' %}
 
-                    <section class="flex bg-white p-5 sm:pb-0 rounded-md rounded-b-none">
+                    <section class="pdp-fc__card pdp-fc__card--form-price flex bg-white p-5 sm:pb-0 rounded-md rounded-b-none">
                         <div class="center-between w-full">
                             <label class="form-label">
-                                <b class="block">
+                                <b class="block text-gray-900">
                                     {{ trans('pages.products.price') }}
                                 </b>
                             </label>
@@ -368,12 +371,12 @@
                     </section>
                     {# Pre-order Campaign #}
                     {% if product.has_preorder_campaign %}
-                        <section class="mt-5 p-5">
+                        <section class="pdp-fc__card pdp-fc__card--preorder mt-5 p-5 rounded-md">
                             <salla-count-down pre-order='{{ product.preorder|json_encode}}' boxed labeled></salla-count-down>
                         </section>
                     {% endif %}
 
-                    <section class="sticky-product-bar bg-white p-5 rounded-md rounded-b-none">
+                    <section class="sticky-product-bar pdp-fc__card pdp-fc__card--form-cta bg-white p-5 rounded-md rounded-b-none">
                         {# Quantity #}
                         {% if product.is_hidden_quantity or product.type == 'booking' %}
                             <input type="hidden" value="1" name="quantity" aria-label="Quantity"/>
@@ -432,6 +435,7 @@
     <div class="container">
         <salla-products-slider source="related" source-value="{{product.id}}" block-title="{{trans('pages.products.similar_products')}}" display-all-url></salla-products-slider>
     </div>
+</div>
 {% endblock %}
 
 {% block scripts %}

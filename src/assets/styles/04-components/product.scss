@@ -412,3 +412,28 @@ salla-quantity-input[max='1']{
     @apply cursor-not-allowed
   }
 }
+
+/* -------------------------------------------------------------------------- */
+/* PDP FreshCart pass — scoped under .pdp-fc (pages/product/single.twig)      */
+/* Preserves: .product-form, .price-wrapper, .total-price, .sticky-product-bar */
+/* -------------------------------------------------------------------------- */
+.pdp-fc {
+  .pdp-fc__grid {
+    @apply w-full;
+  }
+
+  .pdp-fc__title {
+    @apply tracking-tight;
+  }
+
+  .pdp-fc__card {
+    @apply border border-gray-200 shadow-sm;
+  }
+
+  /* Gallery: slightly stronger frame; salla-slider markup unchanged */
+  salla-slider.details-slider.image-slider {
+    .s-slider-container {
+      @apply border-gray-200 shadow-sm;
+    }
+  }
+}

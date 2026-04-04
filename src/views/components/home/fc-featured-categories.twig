@@ -22,11 +22,11 @@
     }
 } %}
 {% set card_count = component.cards|length %}
-<section class="s-block s-block--fc-featured-categories mt-8" data-fc-featured-categories="{{ position }}">
+<section class="s-block s-block--fc-featured-categories" data-fc-featured-categories="{{ position }}">
     <div class="container">
         {% if component.section_title|default('')|trim %}
-            <div class="fc-fcats__head">
-                <h2 class="fc-fcats__section-title">{{ component.section_title }}</h2>
+            <div class="fc-home__head">
+                <h2 class="fc-home__title">{{ component.section_title }}</h2>
             </div>
         {% endif %}
         <salla-slider
