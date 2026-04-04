@@ -46,19 +46,19 @@
                 {
                     "label": "اظهار الصورة كاملةً في المنتصف (Contain)",
                     "value": "contain",
-                    "key": "f4adec13-6e4c-654b-b978-b2807935ced9"
+                    "key": "33d0f70d-c675-49b9-8103-f67b915eab2d"
                 }
             ],
             "options": [
                 {
                     "label": "تغطية الصورة كامل المساحة مع المحافظة على أبعاد الصورة (Cover)",
                     "value": "cover",
-                    "key": "e9c8ea8f-c5c6-234e-935-3bce269afde4"
+                    "key": "5b071101-b186-4c35-8666-c26b37b5753d"
                 },
                 {
                     "label": "اظهار الصورة كاملةً في المنتصف (Contain)",
                     "value": "contain",
-                    "key": "f4adec13-6e4c-654b-b978-b2807935ced9"
+                    "key": "33d0f70d-c675-49b9-8103-f67b915eab2d"
                 }
             ],
             "source": "Manual",
@@ -1104,7 +1104,7 @@
                 },
                 {
                     "id": "announcements",
-                    "key": "b58c9d0e-1f2a-43b4-c5d6-e7f8a9b0c1d2",
+                    "key": "8e8846e7-6bcc-49c5-a5c1-b7d0b0aec71d",
                     "type": "collection",
                     "format": "collection",
                     "label": "عناصر الإعلان",
@@ -1788,7 +1788,7 @@
             ]
         },
         {
-            "key": "c3d4e5f6-7890-abcd-ef01-23456789abcd",
+            "key": "58ae9cb4-cd3a-403d-a0d3-a30fd1a38e9a",
             "title": {
                 "en": "FreshCart-style hero",
                 "ar": "بانر رئيسي (FreshCart)"
@@ -1809,7 +1809,7 @@
                 },
                 {
                     "id": "slides",
-                    "key": "d4e5f6a7-8901-bcde-f012-3456789abcde",
+                    "key": "66250ff5-6f8d-4560-adfd-7a8d849f0691",
                     "type": "collection",
                     "format": "collection",
                     "label": "شرائح البانر",
@@ -1980,7 +1980,7 @@
             ]
         },
         {
-            "key": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+            "key": "ff5c1ac9-9745-4695-912c-3c5d98206078",
             "title": {
                 "en": "FreshCart-style featured categories",
                 "ar": "تصنيفات مميزة (FreshCart)"
@@ -2044,7 +2044,7 @@
                 },
                 {
                     "id": "cards",
-                    "key": "b2c3d4e5-f6a7-8901-bcde-f12345678901",
+                    "key": "aaab2173-2530-4f2a-9430-dd2c39a2afe0",
                     "type": "collection",
                     "format": "collection",
                     "label": "البطاقات",
@@ -2177,7 +2177,7 @@
             ]
         },
         {
-            "key": "c4d5e6f7-a8b9-0123-cdef-456789abcdef",
+            "key": "aafd4fbd-2d38-4908-a1bc-2dc31db1c5c0",
             "title": {
                 "en": "FreshCart-style promo cards",
                 "ar": "بطاقات ترويجية (FreshCart)"
@@ -2245,7 +2245,7 @@
                 },
                 {
                     "id": "cards",
-                    "key": "d5e6f7a8-b9c0-1234-def0-123456789abc",
+                    "key": "ce40f929-87f4-431e-84f3-ae16be7cacdc",
                     "type": "collection",
                     "format": "collection",
                     "label": "البطاقات",
@@ -2366,7 +2366,7 @@
             ]
         },
         {
-            "key": "e7f8a9b0-c1d2-4345-6789-abcdef012345",
+            "key": "b195d2c0-3b8b-4524-a4fa-b0054ba20346",
             "title": {
                 "en": "FreshCart-style value props",
                 "ar": "مزايا المتجر (FreshCart)"
@@ -2387,7 +2387,7 @@
                 },
                 {
                     "id": "items",
-                    "key": "f8a9b0c1-d2e3-4455-6789-abcdef012345",
+                    "key": "314379da-25da-4922-9d13-3b24e750264e",
                     "type": "collection",
                     "format": "collection",
                     "label": "البنود (٤ كحد أقصى)",
@@ -2527,7 +2527,7 @@
             ]
         },
         {
-            "key": "b0c1d2e3-f4a5-4678-9012-bcdefabcdef01",
+            "key": "6d9b3087-fc08-425f-9655-53110af60182",
             "title": {
                 "en": "FreshCart-style daily best",
                 "ar": "أفضل العروض اليومية (FreshCart)"
