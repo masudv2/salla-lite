@@ -597,3 +597,105 @@
     bottom: 3.5rem !important;
   }
 }
+
+/* FreshCart-style featured categories (scoped) */
+.s-block--fc-featured-categories {
+  .fc-fcats__head {
+    @apply relative z-10 mb-4 w-full;
+  }
+
+  .fc-fcats__section-title {
+    @apply text-lg font-bold text-gray-900;
+  }
+
+  .fc-fcats__slider {
+    @apply py-8 md:py-12;
+  }
+
+  .fc-fcats__link {
+    @apply block h-full text-inherit no-underline;
+  }
+
+  .fc-fcats__link--static {
+    @apply cursor-default;
+  }
+
+  .fc-fcats__card {
+    @apply relative h-full break-words rounded-lg border border-gray-300 bg-white transition duration-75 ease-in-out;
+    @apply hover:border-green-600 hover:shadow-md hover:duration-500;
+  }
+
+  .fc-fcats__card-inner {
+    @apply flex flex-col items-center py-8 text-center;
+  }
+
+  .fc-fcats__img {
+    @apply mx-auto mb-3 h-[120px] w-[120px] object-contain;
+  }
+
+  .fc-fcats__title {
+    @apply text-base text-gray-900;
+  }
+
+  .fc-fcats__subtitle {
+    @apply mt-1 text-sm leading-snug text-gray-600;
+  }
+
+  /* Align outer nav closer to FreshCart title row */
+  .fc-fcats__slider .swiper-navigation {
+    @apply top-7;
+  }
+}
+
+/* FreshCart-style promo cards grid (scoped — background tiles, optional whole-card link) */
+.s-block--fc-promo-cards {
+  .fc-promo__head {
+    @apply mb-4 w-full md:mb-8;
+  }
+
+  .fc-promo__section-title {
+    @apply text-lg font-bold text-gray-900;
+  }
+
+  .fc-promo__grid {
+    @apply grid grid-cols-1 gap-2 lg:gap-6;
+  }
+
+  .fc-promo__grid--cols-2 {
+    @apply md:grid-cols-2;
+  }
+
+  .fc-promo__grid--cols-3 {
+    @apply md:grid-cols-3;
+  }
+
+  .fc-promo__grid--cols-4 {
+    @apply md:grid-cols-4;
+  }
+
+  .fc-promo__card {
+    @apply relative min-h-[12rem] overflow-hidden rounded-lg py-10 px-8 text-start;
+    @apply shadow-sm transition-shadow duration-200;
+  }
+
+  a.fc-promo__card--link {
+    @apply block text-inherit no-underline;
+    @apply hover:shadow-md focus:outline-none focus-visible:ring-4 focus-visible:ring-gray-300;
+  }
+
+  .fc-promo__inner {
+    @apply flex flex-col gap-5;
+  }
+
+  .fc-promo__text-block {
+    @apply flex flex-col gap-1;
+  }
+
+  .fc-promo__title {
+    @apply text-xl font-bold leading-snug text-gray-900;
+  }
+
+  .fc-promo__subtitle {
+    @apply text-base font-normal leading-relaxed text-gray-800;
+  }
+}

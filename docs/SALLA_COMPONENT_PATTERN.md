@@ -105,7 +105,9 @@ If something does not show: confirm the commit is the one the store imports, har
 | Promo strip | `component-promo-strip` | `home.promo-strip` | `promo-strip.twig` |
 | Promo cards grid | `component-promo-cards-grid` | `home.promo-cards-grid` | `promo-cards-grid.twig` |
 | FreshCart-style hero | `component-fc-hero` | `home.fc-hero` | `fc-hero.twig` |
+| FreshCart-style featured categories | `component-fc-featured-categories` | `home.fc-featured-categories` | `fc-featured-categories.twig` |
+| FreshCart-style promo cards | `component-fc-promo-cards` | `home.fc-promo-cards` | `fc-promo-cards.twig` |
 
-Editor titles: **Announcement bar** / **شريط الإعلانات**; **Promo strip** / **شريط ترويجي**; **Promo cards grid** / **بطاقات ترويجية (شبكة)**; **FreshCart-style hero** / **بانر رئيسي (FreshCart)**.
+Editor titles: **Announcement bar** / **شريط الإعلانات**; **Promo strip** / **شريط ترويجي**; **Promo cards grid** / **بطاقات ترويجية (شبكة)**; **FreshCart-style hero** / **بانر رئيسي (FreshCart)**; **FreshCart-style featured categories** / **تصنيفات مميزة (FreshCart)**; **FreshCart-style promo cards** / **بطاقات ترويجية (FreshCart)**.
 
 Use these rows as templates when adding new blocks in §6.

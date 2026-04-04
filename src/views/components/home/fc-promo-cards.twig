@@ -1,0 +1,58 @@
+{#
+| Variable                 | Type     | Description                                                                  |
+|--------------------------|----------|------------------------------------------------------------------------------|
+| component                | object   | Twilight fields for FreshCart-style promo cards                               |
+| component.is_visible     | bool     | Toggle section                                                               |
+| component.section_title  | ?string  | Optional heading above the grid                                              |
+| component.desktop_columns| mixed    | "2", "3", or "4" — grid columns from md breakpoint                           |
+| component.cards          | object[] | image, title, optional subtitle, optional url                                 |
+| position                 | int      | Block order on home                                                          |
+#}
+{% if component.is_visible and component.cards|length %}
+{% set colRaw = component.desktop_columns|default('2') %}
+{% set colKey = colRaw.value is defined ? colRaw.value : colRaw %}
+{% set colCount = colKey|default('2') %}
+{% if colCount not in ['2', '3', '4'] %}
+    {% set colCount = '2' %}
+{% endif %}
+{% set gridMod = colCount == '2' ? 'fc-promo__grid--cols-2' : (colCount == '4' ? 'fc-promo__grid--cols-4' : 'fc-promo__grid--cols-3') %}
+<section class="s-block s-block--fc-promo-cards mt-8" data-fc-promo-cards="{{ position }}" data-desktop-cols="{{ colCount }}">
+    <div class="container">
+        {% if component.section_title|default('')|trim %}
+            <div class="fc-promo__head">
+                <h2 class="fc-promo__section-title">{{ component.section_title }}</h2>
+            </div>
+        {% endif %}
+        <div class="fc-promo__grid {{ gridMod }}">
+            {% for card in component.cards %}
+                {% set raw = card.image|default('') %}
+                {% set title = card.title|default('')|trim %}
+                {% if raw|trim and title %}
+                    {% set is_remote = raw|slice(0, 7) == 'http://' or raw|slice(0, 8) == 'https://' %}
+                    {% set bg = is_remote ? raw : raw|asset %}
+                    {% set sub = card.subtitle|default('')|trim %}
+                    {% set href = card.url|default('') %}
+                    {% if href %}
+                        <a href="{{ href }}" class="fc-promo__card fc-promo__card--link" style="background: url({{ bg }}) no-repeat; background-size: cover; background-position: center;">
+                    {% else %}
+                        <div class="fc-promo__card" style="background: url({{ bg }}) no-repeat; background-size: cover; background-position: center;">
+                    {% endif %}
+                        <div class="fc-promo__inner">
+                            <div class="fc-promo__text-block">
+                                <h3 class="fc-promo__title">{{ card.title }}</h3>
+                                {% if sub %}
+                                    <p class="fc-promo__subtitle">{{ sub }}</p>
+                                {% endif %}
+                            </div>
+                        </div>
+                    {% if href %}
+                        </a>
+                    {% else %}
+                        </div>
+                    {% endif %}
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endif %}

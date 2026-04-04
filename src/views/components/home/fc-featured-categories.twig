@@ -1,0 +1,83 @@
+{#
+| Variable                      | Type     | Description                                                                  |
+|-------------------------------|----------|------------------------------------------------------------------------------|
+| component                     | object   | Twilight fields for FreshCart-style featured categories                        |
+| component.is_visible          | bool     | Toggle section                                                               |
+| component.section_title       | ?string  | Optional heading above the carousel                                          |
+| component.desktop_slides      | mixed    | "3" or "4" — slides per view at 1024px+                                      |
+| component.cards               | object[] | Cards: image, title, subtitle, optional url                                  |
+| position                      | int      | Block order on home                                                          |
+#}
+{% if component.is_visible and component.cards|length %}
+{% set dsRaw = component.desktop_slides|default('4') %}
+{% set dsKey = dsRaw.value is defined ? dsRaw.value : dsRaw %}
+{% set perLg = dsKey == '3' ? 3 : 4 %}
+{% set slider_config = {
+    'spaceBetween': 20,
+    'breakpoints': {
+        '0': {'slidesPerView': 1},
+        '480': {'slidesPerView': 2},
+        '768': {'slidesPerView': 2},
+        '1024': {'slidesPerView': perLg}
+    }
+} %}
+{% set card_count = component.cards|length %}
+<section class="s-block s-block--fc-featured-categories mt-8" data-fc-featured-categories="{{ position }}">
+    <div class="container">
+        {% if component.section_title|default('')|trim %}
+            <div class="fc-fcats__head">
+                <h2 class="fc-fcats__section-title">{{ component.section_title }}</h2>
+            </div>
+        {% endif %}
+        <salla-slider
+            id="fc-featured-categories-{{ position }}"
+            class="fc-fcats__slider"
+            type="carousel"
+            controls-outer
+            show-controls="{{ card_count > 1 ? 'true' : 'false' }}"
+            slider-config="{{ slider_config|json_encode|e('html_attr') }}"
+        >
+            <div slot="items">
+                {% for card in component.cards %}
+                    {% set raw = card.image|default('') %}
+                    {% if raw|trim and card.title|default('')|trim %}
+                        {% set is_remote = raw|slice(0, 7) == 'http://' or raw|slice(0, 8) == 'https://' %}
+                        {% set src = is_remote ? raw : raw|asset %}
+                        {% set title = card.title %}
+                        {% set sub = card.subtitle|default('')|trim %}
+                        {% set href = card.url|default('') %}
+                        <div class="swiper-slide">
+                            {% if href %}
+                                <a href="{{ href }}" class="fc-fcats__link">
+                            {% else %}
+                                <div class="fc-fcats__link fc-fcats__link--static">
+                            {% endif %}
+                                <div class="fc-fcats__card">
+                                    <div class="fc-fcats__card-inner">
+                                        <img
+                                            src="{{ src }}"
+                                            alt="{{ title|striptags|trim }}"
+                                            class="fc-fcats__img"
+                                            loading="lazy"
+                                            width="120"
+                                            height="120"
+                                        />
+                                        <div class="fc-fcats__title">{{ title }}</div>
+                                        {% if sub %}
+                                            <p class="fc-fcats__subtitle">{{ sub }}</p>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            {% if href %}
+                                </a>
+                            {% else %}
+                                </div>
+                            {% endif %}
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </salla-slider>
+    </div>
+</section>
+{% endif %}

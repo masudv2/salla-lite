@@ -25,6 +25,8 @@
         "component-promo-strip",
         "component-promo-cards-grid",
         "component-fc-hero",
+        "component-fc-featured-categories",
+        "component-fc-promo-cards",
         "menu-images",
         "filters"
     ],
@@ -1913,6 +1915,392 @@
                             "icon": "sicon-link",
                             "label": "رابط الزر",
                             "id": "slides.cta_url",
+                            "required": false,
+                            "format": "variable-list",
+                            "searchable": true,
+                            "source": "custom",
+                            "sources": [
+                                {
+                                    "label": "منتج",
+                                    "key": "products",
+                                    "value": "products"
+                                },
+                                {
+                                    "label": "تصنيف",
+                                    "key": "categories",
+                                    "value": "categories"
+                                },
+                                {
+                                    "label": "ماركة تجارية",
+                                    "key": "brands",
+                                    "value": "brands"
+                                },
+                                {
+                                    "label": "صفحة تعريفية",
+                                    "key": "pages",
+                                    "value": "pages"
+                                },
+                                {
+                                    "label": "مقالة",
+                                    "key": "blog_articles",
+                                    "value": "blog_articles"
+                                },
+                                {
+                                    "label": "تصنيف ضمن المدونة",
+                                    "key": "blog_categories",
+                                    "value": "blog_categories"
+                                },
+                                {
+                                    "label": "التخفيضات",
+                                    "key": "offers_link",
+                                    "value": "offers_link"
+                                },
+                                {
+                                    "label": "الماركات التجارية",
+                                    "key": "brands_link",
+                                    "value": "brands_link"
+                                },
+                                {
+                                    "label": "المدونة",
+                                    "key": "blog_link",
+                                    "value": "blog_link"
+                                },
+                                {
+                                    "label": "رابط خارجي",
+                                    "key": "custom",
+                                    "value": "custom"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "key": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+            "title": {
+                "en": "FreshCart-style featured categories",
+                "ar": "تصنيفات مميزة (FreshCart)"
+            },
+            "icon": "sicon-layout-grid-rearrange",
+            "path": "home.fc-featured-categories",
+            "fields": [
+                {
+                    "type": "boolean",
+                    "icon": "sicon-toggle-off",
+                    "id": "is_visible",
+                    "label": "إظهار القسم",
+                    "description": "عرض أو إخفاء القسم في الصفحة الرئيسية",
+                    "format": "switch",
+                    "required": false,
+                    "value": true,
+                    "selected": true
+                },
+                {
+                    "type": "string",
+                    "icon": "sicon-format-text-alt",
+                    "label": "عنوان القسم",
+                    "multilanguage": true,
+                    "id": "section_title",
+                    "value": null,
+                    "required": false,
+                    "format": "text",
+                    "placeholder": "Featured Categories",
+                    "minLength": 0,
+                    "maxLength": 120
+                },
+                {
+                    "id": "desktop_slides",
+                    "type": "items",
+                    "format": "dropdown-list",
+                    "label": "بطاقات في الصف على الشاشات الكبيرة",
+                    "description": "يُطابق عرض FreshCart على الشاشات الواسعة (١٠٢٤px+)",
+                    "labelHTML": null,
+                    "icon": "sicon-list",
+                    "selected": [
+                        {
+                            "label": "4",
+                            "value": "4",
+                            "key": "fc-fc-4"
+                        }
+                    ],
+                    "options": [
+                        {
+                            "label": "3",
+                            "value": "3",
+                            "key": "fc-fc-3"
+                        },
+                        {
+                            "label": "4",
+                            "value": "4",
+                            "key": "fc-fc-4"
+                        }
+                    ],
+                    "source": "Manual",
+                    "required": true
+                },
+                {
+                    "id": "cards",
+                    "key": "b2c3d4e5-f6a7-8901-bcde-f12345678901",
+                    "type": "collection",
+                    "format": "collection",
+                    "label": "البطاقات",
+                    "item_label": "بطاقة",
+                    "icon": "sicon-list-add",
+                    "required": true,
+                    "minLength": 1,
+                    "maxLength": 4,
+                    "value": [
+                        {
+                            "cards.image": "images/fc-featured-categories/category-dairy-bread-eggs.jpg",
+                            "cards.title": "Dairy, Bread & Eggs",
+                            "cards.subtitle": "",
+                            "cards.url": null
+                        },
+                        {
+                            "cards.image": "images/fc-featured-categories/category-snack-munchies.jpg",
+                            "cards.title": "Snack & Munchies",
+                            "cards.subtitle": "",
+                            "cards.url": null
+                        },
+                        {
+                            "cards.image": "images/fc-featured-categories/category-bakery-biscuits.jpg",
+                            "cards.title": "Bakery & Biscuits",
+                            "cards.subtitle": "",
+                            "cards.url": null
+                        },
+                        {
+                            "cards.image": "images/fc-featured-categories/category-instant-food.jpg",
+                            "cards.title": "Instant Food",
+                            "cards.subtitle": "",
+                            "cards.url": null
+                        }
+                    ],
+                    "fields": [
+                        {
+                            "type": "string",
+                            "icon": "sicon-image",
+                            "id": "cards.image",
+                            "label": "صورة",
+                            "format": "image",
+                            "required": true,
+                            "value": null
+                        },
+                        {
+                            "type": "string",
+                            "icon": "sicon-format-text-alt",
+                            "label": "العنوان",
+                            "multilanguage": true,
+                            "id": "cards.title",
+                            "format": "text",
+                            "required": true,
+                            "minLength": 1,
+                            "maxLength": 200
+                        },
+                        {
+                            "type": "string",
+                            "icon": "sicon-typography",
+                            "label": "نص فرعي (اختياري)",
+                            "multilanguage": true,
+                            "id": "cards.subtitle",
+                            "format": "textarea",
+                            "required": false,
+                            "maxLength": 300
+                        },
+                        {
+                            "type": "items",
+                            "icon": "sicon-link",
+                            "label": "رابط (اختياري)",
+                            "id": "cards.url",
+                            "required": false,
+                            "format": "variable-list",
+                            "searchable": true,
+                            "source": "custom",
+                            "sources": [
+                                {
+                                    "label": "منتج",
+                                    "key": "products",
+                                    "value": "products"
+                                },
+                                {
+                                    "label": "تصنيف",
+                                    "key": "categories",
+                                    "value": "categories"
+                                },
+                                {
+                                    "label": "ماركة تجارية",
+                                    "key": "brands",
+                                    "value": "brands"
+                                },
+                                {
+                                    "label": "صفحة تعريفية",
+                                    "key": "pages",
+                                    "value": "pages"
+                                },
+                                {
+                                    "label": "مقالة",
+                                    "key": "blog_articles",
+                                    "value": "blog_articles"
+                                },
+                                {
+                                    "label": "تصنيف ضمن المدونة",
+                                    "key": "blog_categories",
+                                    "value": "blog_categories"
+                                },
+                                {
+                                    "label": "التخفيضات",
+                                    "key": "offers_link",
+                                    "value": "offers_link"
+                                },
+                                {
+                                    "label": "الماركات التجارية",
+                                    "key": "brands_link",
+                                    "value": "brands_link"
+                                },
+                                {
+                                    "label": "المدونة",
+                                    "key": "blog_link",
+                                    "value": "blog_link"
+                                },
+                                {
+                                    "label": "رابط خارجي",
+                                    "key": "custom",
+                                    "value": "custom"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "key": "c4d5e6f7-a8b9-0123-cdef-456789abcdef",
+            "title": {
+                "en": "FreshCart-style promo cards",
+                "ar": "بطاقات ترويجية (FreshCart)"
+            },
+            "icon": "sicon-offer",
+            "path": "home.fc-promo-cards",
+            "fields": [
+                {
+                    "type": "boolean",
+                    "icon": "sicon-toggle-off",
+                    "id": "is_visible",
+                    "label": "إظهار القسم",
+                    "description": "عرض أو إخفاء القسم في الصفحة الرئيسية",
+                    "format": "switch",
+                    "required": false,
+                    "value": true,
+                    "selected": true
+                },
+                {
+                    "type": "string",
+                    "icon": "sicon-format-text-alt",
+                    "label": "عنوان القسم (اختياري)",
+                    "multilanguage": true,
+                    "id": "section_title",
+                    "value": null,
+                    "required": false,
+                    "format": "text",
+                    "minLength": 0,
+                    "maxLength": 120
+                },
+                {
+                    "id": "desktop_columns",
+                    "type": "items",
+                    "format": "dropdown-list",
+                    "label": "عدد الأعمدة على سطح المكتب",
+                    "description": "على الشاشات الصغيرة تُعرض البطاقات عمودياً",
+                    "labelHTML": null,
+                    "icon": "sicon-list",
+                    "selected": [
+                        {
+                            "label": "2 columns",
+                            "value": "2",
+                            "key": "fc-pc-2"
+                        }
+                    ],
+                    "options": [
+                        {
+                            "label": "2 columns",
+                            "value": "2",
+                            "key": "fc-pc-2"
+                        },
+                        {
+                            "label": "3 columns",
+                            "value": "3",
+                            "key": "fc-pc-3"
+                        },
+                        {
+                            "label": "4 columns",
+                            "value": "4",
+                            "key": "fc-pc-4"
+                        }
+                    ],
+                    "source": "Manual",
+                    "required": true
+                },
+                {
+                    "id": "cards",
+                    "key": "d5e6f7a8-b9c0-1234-def0-123456789abc",
+                    "type": "collection",
+                    "format": "collection",
+                    "label": "البطاقات",
+                    "item_label": "بطاقة",
+                    "icon": "sicon-list-add",
+                    "required": true,
+                    "minLength": 1,
+                    "maxLength": 4,
+                    "value": [
+                        {
+                            "cards.image": "images/fc-promo-cards/grocery-banner.png",
+                            "cards.title": "Fruits & Vegetables",
+                            "cards.subtitle": "Get Upto 30% Off",
+                            "cards.url": null
+                        },
+                        {
+                            "cards.image": "images/fc-promo-cards/grocery-banner-2.jpg",
+                            "cards.title": "Freshly Baked Buns",
+                            "cards.subtitle": "Get Upto 25% Off",
+                            "cards.url": null
+                        }
+                    ],
+                    "fields": [
+                        {
+                            "type": "string",
+                            "icon": "sicon-image",
+                            "id": "cards.image",
+                            "label": "صورة الخلفية",
+                            "format": "image",
+                            "required": true,
+                            "value": null
+                        },
+                        {
+                            "type": "string",
+                            "icon": "sicon-format-text-alt",
+                            "label": "العنوان",
+                            "multilanguage": true,
+                            "id": "cards.title",
+                            "format": "text",
+                            "required": true,
+                            "minLength": 1,
+                            "maxLength": 200
+                        },
+                        {
+                            "type": "string",
+                            "icon": "sicon-typography",
+                            "label": "نص فرعي (اختياري)",
+                            "multilanguage": true,
+                            "id": "cards.subtitle",
+                            "format": "textarea",
+                            "required": false,
+                            "maxLength": 400
+                        },
+                        {
+                            "type": "items",
+                            "icon": "sicon-link",
+                            "label": "رابط (اختياري)",
+                            "id": "cards.url",
                             "required": false,
                             "format": "variable-list",
                             "searchable": true,
